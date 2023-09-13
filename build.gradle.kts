@@ -20,9 +20,13 @@ repositories {
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-	implementation("org.jetbrains.kotlin:kotlin-reflect")
+	implementation("org.springframework.boot:spring-boot-starter")
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+
+	//implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	//implementation("org.jetbrains.kotlin:kotlin-reflect")
 }
 
 tasks.withType<KotlinCompile> {

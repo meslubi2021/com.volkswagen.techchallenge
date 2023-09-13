@@ -1,10 +1,16 @@
-# Getting Started
+# Volkswagen Digital Hub Technical Evaluation
+
+### Author
+All files contained in this repository have been created by me, Tomás García-Pozuelo, for technical evaluation during September 2023
 
 ### Introduction
 For further reference, please consider the following sections
 
-### Packages
-The project has been done following Hexagonal architecture and CQRS.
+### Requirements
+For further reference, please consider the following sections
+
+### Project structure (Packages)
+The project has been done following Hexagonal Architecture and CQRS.
 
 The main packages are:
 - [application](src%2Fmain%2Fkotlin%2Fcom%2Fvolkswagen%2Ftechchallenge%2Fapplication)
@@ -24,3 +30,7 @@ Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla 
 
 ### How to run
 Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
+
+### Future work (ideas)
+Angular web showing the robots in real time
+Add DGS GraphQL
