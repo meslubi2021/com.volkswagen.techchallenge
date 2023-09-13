@@ -1,20 +1,26 @@
 # Getting Started
 
-### Reference Documentation
-For further reference, please consider the following sections:
+### Introduction
+For further reference, please consider the following sections
 
-* [Official Gradle documentation](https://docs.gradle.org)
-* [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/3.1.3/gradle-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/3.1.3/gradle-plugin/reference/html/#build-image)
-* [Spring Data JPA](https://docs.spring.io/spring-boot/docs/3.1.3/reference/htmlsingle/index.html#data.sql.jpa-and-spring-data)
+### Packages
+The project has been done following Hexagonal architecture and CQRS.
 
-### Guides
-The following guides illustrate how to use some features concretely:
+The main packages are:
+- [application](src%2Fmain%2Fkotlin%2Fcom%2Fvolkswagen%2Ftechchallenge%2Fapplication)
+  <br /> Bla bla bla
+- [domain](src%2Fmain%2Fkotlin%2Fcom%2Fvolkswagen%2Ftechchallenge%2Fdomain)
+  <br /> Bla bla bla
+- [infrastructure](src%2Fmain%2Fkotlin%2Fcom%2Fvolkswagen%2Ftechchallenge%2Finfrastructure)
+  <br /> Bla bla bla
+- [config](src%2Fmain%2Fkotlin%2Fcom%2Fvolkswagen%2Ftechchallenge%2Fconfig)
+  <br /> Bla bla bla
+- [common](src%2Fmain%2Fkotlin%2Fcom%2Fvolkswagen%2Fcommon)
+  <br />This represents all stuff that should be common to several microservices following the same patterns.
+  <br />In this case it contains the interfaces to work with CQRS in a tidy way.
 
-* [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
+### How to build
+Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
 
-### Additional Links
-These additional references should also help you:
-
-* [Gradle Build Scans – insights for your project's build](https://scans.gradle.com#gradle)
-
+### How to run
+Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
