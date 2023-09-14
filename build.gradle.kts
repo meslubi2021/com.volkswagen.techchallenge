@@ -25,6 +25,9 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("io.cucumber:cucumber-java:7.14.0")
+	testImplementation("io.cucumber:cucumber-junit:7.14.0")
+	testImplementation("io.cucumber:cucumber-spring:7.14.0")
 
 	runtimeOnly("com.h2database:h2")
 }
