@@ -1,4 +1,4 @@
-package com.volkswagen.techchallenge
+package com.volkswagen.techchallenge.tests.unit
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest

@@ -1,5 +1,3 @@
-package com.volkswagen.techchallenge.application
+package com.volkswagen.techchallenge.infrastructure
 
-import com.volkswagen.common.cqrs.command.Command
-
-class EmptyInfra() : Command
+class EmptyInfra()

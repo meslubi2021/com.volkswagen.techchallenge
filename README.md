@@ -10,7 +10,7 @@ For further reference, please consider the following sections
 For further reference, please consider the following sections
 
 ### Project structure (Packages)
-The project has been done following Hexagonal Architecture and CQRS.
+The project has been done following Hexagonal Architecture and CQS (https://martinfowler.com/bliki/CommandQuerySeparation.html).
 
 The main packages are:
 - [application](src%2Fmain%2Fkotlin%2Fcom%2Fvolkswagen%2Ftechchallenge%2Fapplication)
@@ -23,7 +23,7 @@ The main packages are:
   <br /> Bla bla bla
 - [common](src%2Fmain%2Fkotlin%2Fcom%2Fvolkswagen%2Fcommon)
   <br />This represents all stuff that should be common to several microservices following the same patterns.
-  <br />In this case it contains the interfaces to work with CQRS in a tidy way.
+  <br />In this case it contains the interfaces to work with CQS in a tidy way.
 
 ### How to build
 Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
@@ -34,3 +34,5 @@ Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla 
 ### Future work (ideas)
 Angular web showing the robots in real time
 Add DGS GraphQL
+Go for CQRS, add an event bus and explore the possibility of using Axon or other similar framework for event architecture.
+Change MetricPublisher by something more useful like Datadog or similar
