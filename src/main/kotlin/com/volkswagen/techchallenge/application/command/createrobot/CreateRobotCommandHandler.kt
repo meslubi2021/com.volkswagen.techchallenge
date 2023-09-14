@@ -1,7 +1,6 @@
-package com.volkswagen.techchallenge.application.command.handler
+package com.volkswagen.techchallenge.application.command.createrobot
 
 import com.volkswagen.common.cqrs.command.CommandHandler
-import com.volkswagen.techchallenge.application.command.CreateRobotCommand
 import com.volkswagen.techchallenge.domain.entity.Robot
 import com.volkswagen.techchallenge.domain.respository.RobotRepository
 import com.volkswagen.techchallenge.domain.respository.WorkspaceRepository

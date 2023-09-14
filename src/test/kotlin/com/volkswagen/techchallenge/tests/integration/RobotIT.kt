@@ -1,11 +1,11 @@
 package com.volkswagen.techchallenge.tests.integration
 
-import com.volkswagen.techchallenge.application.command.CreateRobotCommand
-import com.volkswagen.techchallenge.application.command.CreateWorkspaceCommand
-import com.volkswagen.techchallenge.application.command.MoveRobotCommand
-import com.volkswagen.techchallenge.application.command.handler.CreateRobotCommandHandler
-import com.volkswagen.techchallenge.application.command.handler.CreateWorkspaceCommandHandler
-import com.volkswagen.techchallenge.application.command.handler.MoveRobotCommandHandler
+import com.volkswagen.techchallenge.application.command.createrobot.CreateRobotCommand
+import com.volkswagen.techchallenge.application.command.createworkspace.CreateWorkspaceCommand
+import com.volkswagen.techchallenge.application.command.moverobot.MoveRobotCommand
+import com.volkswagen.techchallenge.application.command.createrobot.CreateRobotCommandHandler
+import com.volkswagen.techchallenge.application.command.createworkspace.CreateWorkspaceCommandHandler
+import com.volkswagen.techchallenge.application.command.moverobot.MoveRobotCommandHandler
 import com.volkswagen.techchallenge.application.query.getrobotposition.GetRobotPositionQuery
 import com.volkswagen.techchallenge.application.query.getrobotposition.GetRobotPositionQueryHandler
 import com.volkswagen.techchallenge.domain.value.`object`.Heading

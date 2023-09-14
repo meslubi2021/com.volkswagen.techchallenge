@@ -5,8 +5,8 @@ import java.util.*
 
 class Robot(
     var id: Long? = null,
-    var logicalId: UUID,
-    var workspaceId: Long,
+    val logicalId: UUID,
+    val workspaceId: Long,
     var positionX: Int,
     var positionY: Int,
     var heading: Heading

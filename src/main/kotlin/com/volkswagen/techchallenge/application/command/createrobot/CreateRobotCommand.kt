@@ -1,4 +1,4 @@
-package com.volkswagen.techchallenge.application.command
+package com.volkswagen.techchallenge.application.command.createrobot
 
 import com.volkswagen.common.cqrs.command.Command
 import com.volkswagen.techchallenge.domain.value.`object`.Heading

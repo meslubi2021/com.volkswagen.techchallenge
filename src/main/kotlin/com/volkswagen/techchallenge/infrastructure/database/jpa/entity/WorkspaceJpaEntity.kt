@@ -8,10 +8,10 @@ import java.util.*
 open class WorkspaceJpaEntity(
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    open var id: Long? = null,
+    open val id: Long? = null,
 
     @Column
-    open var logicalId: UUID,
+    open val logicalId: UUID,
 
     @Column
     open val upperRightCornerX: Int,

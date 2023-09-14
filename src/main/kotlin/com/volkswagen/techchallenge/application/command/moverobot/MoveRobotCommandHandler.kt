@@ -1,7 +1,6 @@
-package com.volkswagen.techchallenge.application.command.handler
+package com.volkswagen.techchallenge.application.command.moverobot
 
 import com.volkswagen.common.cqrs.command.CommandHandler
-import com.volkswagen.techchallenge.application.command.MoveRobotCommand
 import com.volkswagen.techchallenge.domain.respository.RobotRepository
 import com.volkswagen.techchallenge.metrics.MetricsPublisher
 import org.slf4j.LoggerFactory

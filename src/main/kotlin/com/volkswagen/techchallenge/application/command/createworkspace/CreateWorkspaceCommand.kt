@@ -1,4 +1,4 @@
-package com.volkswagen.techchallenge.application.command
+package com.volkswagen.techchallenge.application.command.createworkspace
 
 import com.volkswagen.common.cqrs.command.Command
 import java.util.UUID

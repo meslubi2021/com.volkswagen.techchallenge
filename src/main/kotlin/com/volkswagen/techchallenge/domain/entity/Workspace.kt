@@ -4,7 +4,7 @@ import java.util.*
 
 class Workspace(
     var id: Long? = null,
-    var logicalId: UUID,
+    val logicalId: UUID,
     val upperRightCornerX: Int,
     val upperRightCornerY: Int,
     val robots: MutableList<Robot> = ArrayList()

@@ -8,20 +8,20 @@ import java.util.*
 open class RobotJpaEntity(
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    open var id: Long? = null,
+    open val id: Long? = null,
 
     @Column
-    open var logicalId: UUID,
+    open val logicalId: UUID,
 
     @Column
-    open var workspaceId: Long,
+    open val workspaceId: Long,
 
     @Column
-    open var positionX: Int,
+    open val positionX: Int,
 
     @Column
-    open var positionY: Int,
+    open val positionY: Int,
 
     @Column
-    open var heading: String
+    open val heading: String
 )
