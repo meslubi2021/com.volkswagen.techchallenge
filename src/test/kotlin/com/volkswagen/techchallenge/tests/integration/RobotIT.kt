@@ -1,15 +1,14 @@
 package com.volkswagen.techchallenge.tests.integration
 
-import com.volkswagen.techchallenge.application.command.InitRobotCommand
-import com.volkswagen.techchallenge.application.command.InitWorkspaceCommand
+import com.volkswagen.techchallenge.application.command.CreateRobotCommand
+import com.volkswagen.techchallenge.application.command.CreateWorkspaceCommand
 import com.volkswagen.techchallenge.application.command.MoveRobotCommand
-import com.volkswagen.techchallenge.application.command.handler.InitRobotCommandHandler
-import com.volkswagen.techchallenge.application.command.handler.InitWorkspaceCommandHandler
+import com.volkswagen.techchallenge.application.command.handler.CreateRobotCommandHandler
+import com.volkswagen.techchallenge.application.command.handler.CreateWorkspaceCommandHandler
 import com.volkswagen.techchallenge.application.command.handler.MoveRobotCommandHandler
 import com.volkswagen.techchallenge.application.query.getrobotposition.GetRobotPositionQuery
 import com.volkswagen.techchallenge.application.query.getrobotposition.GetRobotPositionQueryHandler
-import com.volkswagen.techchallenge.domain.entity.Vector
-import com.volkswagen.techchallenge.domain.value.`object`.Direction
+import com.volkswagen.techchallenge.domain.value.`object`.Heading
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.beans.factory.annotation.Autowired
@@ -29,10 +28,10 @@ import java.util.UUID
 class RobotIT {
 
 	@Autowired
-	lateinit var initWorkspaceCommandHandler: InitWorkspaceCommandHandler
+	lateinit var createWorkspaceCommandHandler: CreateWorkspaceCommandHandler
 
 	@Autowired
-	lateinit var initRobotCommandHandler: InitRobotCommandHandler
+	lateinit var createRobotCommandHandler: CreateRobotCommandHandler
 
 	@Autowired
 	lateinit var moveRobotCommandHandler: MoveRobotCommandHandler
@@ -40,26 +39,26 @@ class RobotIT {
 	@Autowired
 	lateinit var getRobotPositionQueryHandler: GetRobotPositionQueryHandler
 
-
-
 	@Test
-	fun contextLoads() {
+	fun `happy path`() {
 
 		val workspaceLogicalId = UUID.randomUUID()
-		initWorkspaceCommandHandler.handle(
-			InitWorkspaceCommand(
+		createWorkspaceCommandHandler.handle(
+			CreateWorkspaceCommand(
 				workspaceLogicalId,
-				Vector(5,5)
+				5,
+				5
 			)
 		)
 
 		val robotLogicalId = UUID.randomUUID()
-		initRobotCommandHandler.handle(
-			InitRobotCommand(
+		createRobotCommandHandler.handle(
+			CreateRobotCommand(
 				robotLogicalId,
 				workspaceLogicalId,
-				Vector(1, 2),
-				Direction.NORTH
+				1,
+				2,
+				Heading.NORTH
 			)
 		)
 
@@ -70,7 +69,7 @@ class RobotIT {
 			)
 		)
 
-		getRobotPositionQueryHandler.handle(
+		val robotPosition = getRobotPositionQueryHandler.handle(
 			GetRobotPositionQuery(
 				robotLogicalId
 			)

@@ -1,9 +1,8 @@
 package com.volkswagen.techchallenge.infrastructure.database.mapper
 
 import com.volkswagen.techchallenge.domain.entity.Robot
-import com.volkswagen.techchallenge.domain.entity.Vector
-import com.volkswagen.techchallenge.domain.value.`object`.Direction
-import com.volkswagen.techchallenge.infrastructure.database.entity.RobotJpaEntity
+import com.volkswagen.techchallenge.domain.value.`object`.Heading
+import com.volkswagen.techchallenge.infrastructure.database.jpa.entity.RobotJpaEntity
 
 class RobotMapper {
 
@@ -12,8 +11,10 @@ class RobotMapper {
             return Robot(
                 id = jpaEntity.id,
                 logicalId = jpaEntity.logicalId,
-                position = Vector(jpaEntity.positionX, jpaEntity.positionY),
-                direction = Direction.valueOf(jpaEntity.direction)
+                workspaceId = jpaEntity.workspaceId,
+                positionX = jpaEntity.positionX,
+                positionY = jpaEntity.positionY,
+                heading = Heading.from(jpaEntity.heading)
             )
         }
 
@@ -21,9 +22,10 @@ class RobotMapper {
             return RobotJpaEntity(
                 id = entity.id,
                 logicalId = entity.logicalId,
-                positionX = entity.position.x,
-                positionY = entity.position.y,
-                direction = entity.direction.value
+                workspaceId = entity.workspaceId,
+                positionX = entity.positionX,
+                positionY = entity.positionY,
+                heading = entity.heading.value
             )
         }
     }

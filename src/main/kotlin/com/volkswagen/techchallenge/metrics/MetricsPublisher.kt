@@ -8,6 +8,6 @@ class MetricsPublisher {
     private val logger = LoggerFactory.getLogger(this.javaClass)
 
     fun increment(metricName: String) {
-        logger.info("[MetricsPublisher] - Incrementing $metricName")
+        logger.info("[${this.javaClass.simpleName}] - Incrementing $metricName")
     }
 }

@@ -1,18 +1,19 @@
 package com.volkswagen.techchallenge.application.query.getrobotposition
 
 import com.volkswagen.common.cqrs.query.QueryHandler
-import com.volkswagen.techchallenge.domain.entity.Vector
-import com.volkswagen.techchallenge.domain.value.`object`.Direction
+import com.volkswagen.techchallenge.domain.respository.RobotRepository
 import org.springframework.stereotype.Service
 
 @Service
 class GetRobotPositionQueryHandler(
-    //private val rewardRepository: RewardRepository,
+    val robotRepository: RobotRepository
 ) : QueryHandler<GetRobotPositionQuery, GetRobotPositionResponse> {
     override fun handle(query: GetRobotPositionQuery): GetRobotPositionResponse {
+        val robot = robotRepository.findByLogicalId(query.robotLogicalId)
         return GetRobotPositionResponse(
-            Vector(0,0),
-            Direction.NORTH
+            positionX = robot.positionX,
+            positionY = robot.positionY,
+            heading = robot.heading
         )
     }
 }

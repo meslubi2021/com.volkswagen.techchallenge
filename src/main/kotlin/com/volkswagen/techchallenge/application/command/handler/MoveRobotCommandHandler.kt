@@ -2,16 +2,35 @@ package com.volkswagen.techchallenge.application.command.handler
 
 import com.volkswagen.common.cqrs.command.CommandHandler
 import com.volkswagen.techchallenge.application.command.MoveRobotCommand
+import com.volkswagen.techchallenge.domain.respository.RobotRepository
+import com.volkswagen.techchallenge.metrics.MetricsPublisher
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 
 @Service
 class MoveRobotCommandHandler(
-    //private val customerRepository: CustomerRepository,
+    val metricsPublisher: MetricsPublisher,
+    val robotRepository: RobotRepository
 ) : CommandHandler<MoveRobotCommand> {
     private val logger = LoggerFactory.getLogger(this.javaClass)
 
     override fun handle(command: MoveRobotCommand) {
-        logger.info("[MoveRobotCommandHandler] - Done!")
+
+        var robot = robotRepository.findByLogicalId(command.robotLogicalId)
+
+        command.moveSequence.forEach {
+            logger.info("[${this.javaClass.simpleName}] - Processing movement letter => $it")
+
+            when(it) {
+                'L' -> robot.left()
+                'R' -> robot.right()
+                'M' -> robot.move()
+                else -> { throw IllegalArgumentException()}
+            }
+        }
+
+        robot = robotRepository.save(robot)
+
+        logger.info("[${this.javaClass.simpleName}] - Done!")
     }
 }

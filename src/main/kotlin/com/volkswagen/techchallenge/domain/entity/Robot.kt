@@ -1,38 +1,40 @@
 package com.volkswagen.techchallenge.domain.entity
 
-import com.volkswagen.techchallenge.domain.value.`object`.Direction
+import com.volkswagen.techchallenge.domain.value.`object`.Heading
 import java.util.*
 
 class Robot(
-    var id: Long?,
+    var id: Long? = null,
     var logicalId: UUID,
-    var position: Vector,
-    var direction: Direction
+    var workspaceId: Long,
+    var positionX: Int,
+    var positionY: Int,
+    var heading: Heading
 ) {
     fun move() {
-        when(direction) {
-            Direction.NORTH -> position.y + 1
-            Direction.EAST -> position.x + 1
-            Direction.SOUTH -> position.y - 1
-            Direction.WEST -> position.x - 1
+        when(heading) {
+            Heading.NORTH -> positionY += 1
+            Heading.EAST -> positionX += 1
+            Heading.SOUTH -> positionY += -1
+            Heading.WEST -> positionX += -1
         }
     }
 
     fun left() {
-        direction = when(direction) {
-            Direction.NORTH -> Direction.WEST
-            Direction.EAST -> Direction.NORTH
-            Direction.SOUTH -> Direction.EAST
-            Direction.WEST -> Direction.SOUTH
+        heading = when(heading) {
+            Heading.NORTH -> Heading.WEST
+            Heading.EAST -> Heading.NORTH
+            Heading.SOUTH -> Heading.EAST
+            Heading.WEST -> Heading.SOUTH
         }
     }
 
     fun right() {
-        direction = when(direction) {
-            Direction.NORTH -> Direction.EAST
-            Direction.EAST -> Direction.SOUTH
-            Direction.SOUTH -> Direction.WEST
-            Direction.WEST -> Direction.NORTH
+        heading = when(heading) {
+            Heading.NORTH -> Heading.EAST
+            Heading.EAST -> Heading.SOUTH
+            Heading.SOUTH -> Heading.WEST
+            Heading.WEST -> Heading.NORTH
         }
     }
 }
