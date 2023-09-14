@@ -48,7 +48,7 @@ class RobotSteps : BaseIntegrationTest() {
         )
     }
 
-    @When("the robot with UUID {string} does move sequence {string}")
+    @When("the robot with UUID {string} moves sequence {string}")
     fun `the robot does move sequence`(uuid: String, moveSequence: String) {
         moveRobotCommandHandler.handle(
             MoveRobotCommand(

@@ -6,6 +6,10 @@ All files contained in this repository have been created by me, Tomás García-P
 ### Introduction
 For further reference, please consider the following sections
 
+### Assumptions
+- Workspaces have a known unique identifier (UUID)
+- Robots have a known unique identifier (UUID)
+
 ### Requirements
 For further reference, please consider the following sections
 
@@ -33,6 +37,6 @@ Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla 
 
 ### Future work (ideas)
 Angular web showing the robots in real time
-Add DGS GraphQL
-Go for CQRS, add an event bus and explore the possibility of using Axon or other similar framework for event architecture.
+Add some REST DGS GraphQL
+Go for CQRS, add an event bus (Kafka!?) and explore the possibility of using Axon or other similar framework for event architecture.
 Change MetricPublisher by something more useful like Datadog or similar

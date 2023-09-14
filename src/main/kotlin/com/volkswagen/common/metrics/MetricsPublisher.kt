@@ -1,4 +1,4 @@
-package com.volkswagen.techchallenge.metrics
+package com.volkswagen.common.metrics
 
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
@@ -8,6 +8,6 @@ class MetricsPublisher {
     private val logger = LoggerFactory.getLogger(this.javaClass)
 
     fun increment(metricName: String) {
-        logger.info("[${this.javaClass.simpleName}] - Incrementing $metricName")
+        logger.info("[${this.javaClass.simpleName}] - Incrementing metric \"$metricName\"")
     }
 }

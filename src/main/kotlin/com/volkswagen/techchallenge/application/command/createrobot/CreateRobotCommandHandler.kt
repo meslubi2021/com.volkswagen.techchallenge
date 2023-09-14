@@ -4,8 +4,7 @@ import com.volkswagen.common.cqrs.command.CommandHandler
 import com.volkswagen.techchallenge.domain.entity.Robot
 import com.volkswagen.techchallenge.domain.respository.RobotRepository
 import com.volkswagen.techchallenge.domain.respository.WorkspaceRepository
-import com.volkswagen.techchallenge.metrics.MetricNames
-import com.volkswagen.techchallenge.metrics.MetricsPublisher
+import com.volkswagen.common.metrics.MetricsPublisher
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 
@@ -32,6 +31,6 @@ class CreateRobotCommandHandler(
         )
 
         logger.info("[${this.javaClass.simpleName}] - Done!")
-        metricsPublisher.increment(MetricNames.ROBOT_CREATED)
+        metricsPublisher.increment("volkswagen.techchallenge.robot.created")
     }
 }
