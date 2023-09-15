@@ -1,4 +1,4 @@
-package com.volkswagen.techchallenge.infrastructure.rest
+package com.volkswagen.techchallenge.infrastructure.api.rest
 
 import com.volkswagen.techchallenge.infrastructure.service.FactoryService
 import org.springframework.http.HttpStatus
