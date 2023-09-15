@@ -51,6 +51,32 @@ class RobotSteps : BaseIntegrationTest() {
         )
     }
 
+    @When("a robot with UUID {string} is at position {int}, {int} and heading {string} in workspace with UUID {string} throws exception")
+    fun `a robot with UUID is at position and heading in workspace with UUID throws exception`(
+        robotLogicalId: String,
+        positionX: Int,
+        positionY: Int,
+        heading: String,
+        workspaceLogicalId: String,
+        dataTable: DataTable) {
+        val options = dataTable.asMap(String::class.java, String::class.java)
+
+        val exception = assertThrows<DomainException> {
+            createRobotCommandHandler.handle(
+                CreateRobotCommand(
+                    UUID.fromString(robotLogicalId),
+                    UUID.fromString(workspaceLogicalId),
+                    positionX,
+                    positionY,
+                    Heading.from(heading)
+                )
+            )
+        }
+
+        Assertions.assertThat(exception.message).isEqualTo(getMandatoryParameter("exceptionMessage", options))
+        Assertions.assertThat(exception.code).isEqualTo(getMandatoryParameter("exceptionCode", options))
+    }
+
     @When("the robot with UUID {string} moves sequence {string}")
     fun `the robot does move sequence`(uuid: String, moveSequence: String) {
         moveRobotCommandHandler.handle(

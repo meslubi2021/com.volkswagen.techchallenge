@@ -51,3 +51,9 @@ Feature: Robot commands and queries
       | exceptionCode    | ROBOT_OUTSIDE_WORKSPACE                                         |
       | exceptionMessage | [RobotOutsideWorkspaceException] - Not possible to move to 3, 1 |
     And the robot with UUID "767fabd0-050f-409a-92ff-0d450aa23ecc" is at position 2, 1 and heading "E"
+
+  Scenario: [7]: Created robot has to have positive positionX
+    Given a workspace with UUID "edc371b1-6b1e-4358-ba8e-b72e4bf71068" and upper right corner at position 5, 5
+    And a robot with UUID "effec6b0-6061-4cf2-8fb7-7758919eb5ac" is at position -1, 2 and heading "N" in workspace with UUID "edc371b1-6b1e-4358-ba8e-b72e4bf71068" throws exception
+      | exceptionCode    | VALIDATION                                               |
+      | exceptionMessage | [ValidationException] - Robot has to be inside workspace |

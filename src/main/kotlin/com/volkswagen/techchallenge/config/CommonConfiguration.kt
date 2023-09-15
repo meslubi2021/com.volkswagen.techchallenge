@@ -8,6 +8,6 @@ import org.springframework.context.annotation.Configuration
     "com.volkswagen.techchallenge.application",
     "com.volkswagen.techchallenge.domain",
     "com.volkswagen.techchallenge.infrastructure",
-    "com.volkswagen.common.metrics" //TEMP
+    "com.volkswagen.common.metrics" //TODO
 ])
 class CommonConfiguration
