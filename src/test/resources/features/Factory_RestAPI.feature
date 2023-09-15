@@ -64,4 +64,4 @@ Feature: Factory API REST tests
       | 1 2 N  |
       | RMMLMM |
     Then response has code 400 and body is
-      | {"message":"[ValidationException] - Workspace need a correct size"} |
+      | {"message":"[ValidationException] - Workspace needs a correct size"} |

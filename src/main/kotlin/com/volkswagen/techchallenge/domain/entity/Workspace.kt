@@ -15,7 +15,7 @@ class Workspace(
 
     init {
         if(upperRightCornerX <= 0 || upperRightCornerY <= 0) {
-            throw ValidationException("Workspace need a correct size")
+            throw ValidationException("Workspace needs a correct size")
         }
     }
 

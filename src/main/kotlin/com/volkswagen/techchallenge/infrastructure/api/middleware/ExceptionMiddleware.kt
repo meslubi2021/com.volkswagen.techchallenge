@@ -23,6 +23,8 @@ class ExceptionMiddleware {
     @ExceptionHandler(Exception::class)
     fun genericException(ex: Exception): ResponseEntity<ErrorResponse> {
         LoggerFactory.getLogger(ExceptionMiddleware::class.java).error(ex.message, ex)
-        return ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR)
+
+        // For security reasons, when having a 500 we do not send the reason
+        return ResponseEntity(/*ErrorResponse(ex.message!!),*/ HttpStatus.INTERNAL_SERVER_ERROR)
     }
 }

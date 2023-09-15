@@ -1,13 +1,12 @@
 package com.volkswagen.techchallenge.infrastructure.api.rest
 
+import com.volkswagen.common.cqrs.command.CommandHandler
+import com.volkswagen.common.cqrs.query.QueryHandler
 import com.volkswagen.techchallenge.application.command.createrobot.CreateRobotCommand
-import com.volkswagen.techchallenge.application.command.createrobot.CreateRobotCommandHandler
 import com.volkswagen.techchallenge.application.command.createworkspace.CreateWorkspaceCommand
-import com.volkswagen.techchallenge.application.command.createworkspace.CreateWorkspaceCommandHandler
 import com.volkswagen.techchallenge.application.command.moverobot.MoveRobotCommand
-import com.volkswagen.techchallenge.application.command.moverobot.MoveRobotCommandHandler
 import com.volkswagen.techchallenge.application.query.getrobotposition.GetRobotPositionQuery
-import com.volkswagen.techchallenge.application.query.getrobotposition.GetRobotPositionQueryHandler
+import com.volkswagen.techchallenge.application.query.getrobotposition.GetRobotPositionResponse
 import com.volkswagen.techchallenge.domain.value.`object`.Heading
 import com.volkswagen.techchallenge.infrastructure.exception.BadRequestException
 import org.springframework.http.HttpStatus
@@ -18,10 +17,10 @@ import java.util.*
 @RestController
 @RequestMapping("/factory")
 class FactoryController(
-    val createWorkspaceCommandHandler: CreateWorkspaceCommandHandler,
-    val createRobotCommandHandler: CreateRobotCommandHandler,
-    val moveRobotCommandHandler: MoveRobotCommandHandler,
-    val getRobotPositionQueryHandler: GetRobotPositionQueryHandler
+    val createWorkspaceCommandHandler: CommandHandler<CreateWorkspaceCommand>,
+    val createRobotCommandHandler: CommandHandler<CreateRobotCommand>,
+    val moveRobotCommandHandler: CommandHandler<MoveRobotCommand>,
+    val getRobotPositionQueryHandler: QueryHandler<GetRobotPositionQuery, GetRobotPositionResponse>
 ) {
     companion object {
         // https://ihateregex.io/playground/
