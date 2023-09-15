@@ -39,49 +39,60 @@ class FactoryController(
         }
 
         val lines = inputSequence.split("\n")
-
         val workspaceUuid = UUID.randomUUID()
-        val workspaceUpperRight = lines[0].split(" ").map { it.toInt() }
+        val (workspaceUpperRightX, workspaceUpperRightY) = workspaceUpperRightSplitter(lines[0])
         createWorkspaceCommandHandler.handle(
             CreateWorkspaceCommand(
                 workspaceUuid,
-                workspaceUpperRight[0],
-                workspaceUpperRight[1]
+                workspaceUpperRightX,
+                workspaceUpperRightY
             )
         )
 
         var result = ""
-        lines.subList(1, lines.count()).chunked(2).forEach {
+        lines
+            .subList(1, lines.count())
+            .chunked(2) { (positionAndHeadings, moveSequence) ->
 
-            val robotUuid = UUID.randomUUID()
-            val positionAndHeadings = it[0].split(" ")
-            createRobotCommandHandler.handle(
-                CreateRobotCommand(
-                    robotLogicalId = robotUuid,
-                    workspaceLogicalId = workspaceUuid,
-                    positionX = positionAndHeadings[0].toInt(),
-                    positionY = positionAndHeadings[1].toInt(),
-                    heading = Heading.from(positionAndHeadings[2])
+                val robotUuid = UUID.randomUUID()
+                val (posX, posY, heading) = positionsAndHeadingSplitter(positionAndHeadings)
+                createRobotCommandHandler.handle(
+                    CreateRobotCommand(
+                        robotLogicalId = robotUuid,
+                        workspaceLogicalId = workspaceUuid,
+                        positionX = posX,
+                        positionY = posY,
+                        heading = Heading.from(heading)
+                    )
                 )
-            )
 
-            moveRobotCommandHandler.handle(
-                MoveRobotCommand(
-                    robotLogicalId = robotUuid,
-                    moveSequence = it[1]
+                moveRobotCommandHandler.handle(
+                    MoveRobotCommand(
+                        robotLogicalId = robotUuid,
+                        moveSequence = moveSequence
+                    )
                 )
-            )
 
-            val robotFinalPositionAndHeading = getRobotPositionQueryHandler.handle(
-                GetRobotPositionQuery(
-                    robotLogicalId = robotUuid
+                val robotFinalPositionAndHeading = getRobotPositionQueryHandler.handle(
+                    GetRobotPositionQuery(
+                        robotLogicalId = robotUuid
+                    )
                 )
-            )
 
-            result += "${robotFinalPositionAndHeading.positionX} ${robotFinalPositionAndHeading.positionY} ${robotFinalPositionAndHeading.heading.value}\n"
-        }
+                result += "${robotFinalPositionAndHeading.positionX} ${robotFinalPositionAndHeading.positionY} ${robotFinalPositionAndHeading.heading.value}\n"
+            }
 
         return result.trim()
+    }
+
+    private fun workspaceUpperRightSplitter(input: String): Pair<Int, Int> {
+        val split = input.split(" ").map { it.toInt() }
+        return Pair(split[0],split[1])
+    }
+
+    private fun positionsAndHeadingSplitter(input: String): Triple<Int, Int, String> {
+        val split = input.split(" ")
+        return Triple(split[0].toInt(),split[1].toInt(),split[2])
     }
 
 }
