@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler
 @ControllerAdvice
 class ExceptionMiddleware {
     @ExceptionHandler(BadRequestException::class)
-    fun validationException(ex: BadRequestException): ResponseEntity<ErrorResponse> {
+    fun badRequestException(ex: BadRequestException): ResponseEntity<ErrorResponse> {
         return ResponseEntity(ErrorResponse(ex.message), HttpStatus.BAD_REQUEST)
     }
 

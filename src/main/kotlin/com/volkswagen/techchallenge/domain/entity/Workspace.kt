@@ -2,6 +2,7 @@ package com.volkswagen.techchallenge.domain.entity
 
 import com.volkswagen.techchallenge.domain.exception.RobotCollisionException
 import com.volkswagen.techchallenge.domain.exception.RobotOutsideWorkspaceException
+import com.volkswagen.techchallenge.domain.exception.ValidationException
 import java.util.*
 
 class Workspace(
@@ -11,6 +12,13 @@ class Workspace(
     val upperRightCornerY: Int,
     val robots: MutableList<Robot> = ArrayList()
 ) {
+
+    init {
+        if(upperRightCornerX <= 0 || upperRightCornerY <= 0) {
+            throw ValidationException("Workspace need a correct size")
+        }
+    }
+
     fun isPossibleToMoveRobot(robot: Robot): Boolean {
         if (
             (robot.positionX < 0 || robot.positionX > upperRightCornerX) ||
