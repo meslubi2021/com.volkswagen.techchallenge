@@ -10,7 +10,7 @@ open class RobotJpaEntity(
     @GeneratedValue(strategy= GenerationType.AUTO)
     open val id: Long? = null,
 
-    @Column
+    @Column(unique=true)
     open val logicalId: UUID,
 
     @Column

@@ -14,10 +14,9 @@ class WorkspaceSteps : BaseIntegrationTest() {
 
     @Given("a workspace with UUID {string} and upper right corner at position {int}, {int}")
     fun `a workspace with upper right corner at position`(uuid: String, upperRightCornerX: Int, upperRightCornerY: Int) {
-        val workspaceLogicalId = UUID.fromString(uuid)
         createWorkspaceCommandHandler.handle(
             CreateWorkspaceCommand(
-                workspaceLogicalId,
+                UUID.fromString(uuid),
                 upperRightCornerX,
                 upperRightCornerY
             )

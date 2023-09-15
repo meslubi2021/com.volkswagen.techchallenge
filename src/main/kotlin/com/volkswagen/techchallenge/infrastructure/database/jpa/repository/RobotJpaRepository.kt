@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository
 import java.util.*
 
 @Repository
-interface RobotJpaRepository : CrudRepository<RobotJpaEntity, Int> {
+interface RobotJpaRepository : CrudRepository<RobotJpaEntity, Long> {
     fun findByLogicalId(logicalId: UUID): RobotJpaEntity
 }

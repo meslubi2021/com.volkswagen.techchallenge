@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository
 import java.util.*
 
 @Repository
-interface WorkspaceJpaRepository : CrudRepository<WorkspaceJpaEntity, Int> {
+interface WorkspaceJpaRepository : CrudRepository<WorkspaceJpaEntity, Long> {
     fun findByLogicalId(logicalId: UUID): WorkspaceJpaEntity
 }

@@ -10,7 +10,7 @@ open class WorkspaceJpaEntity(
     @GeneratedValue(strategy= GenerationType.AUTO)
     open val id: Long? = null,
 
-    @Column
+    @Column(unique=true)
     open val logicalId: UUID,
 
     @Column
@@ -20,6 +20,5 @@ open class WorkspaceJpaEntity(
     open val upperRightCornerY: Int,
 
     @OneToMany(cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
-    @JoinColumn(name = "workspaceId")
     open val robots: List<RobotJpaEntity>
 )

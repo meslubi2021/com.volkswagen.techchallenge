@@ -16,7 +16,7 @@ class CreateWorkspaceCommandHandler(
 
     override fun handle(command: CreateWorkspaceCommand) {
 
-        workspaceRepository.create(
+        workspaceRepository.save(
             Workspace(
                 logicalId = command.workspaceLogicalId,
                 upperRightCornerX = command.upperRightCornerX,

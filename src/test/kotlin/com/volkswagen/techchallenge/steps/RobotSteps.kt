@@ -7,12 +7,15 @@ import com.volkswagen.techchallenge.application.command.moverobot.MoveRobotComma
 import com.volkswagen.techchallenge.application.command.moverobot.MoveRobotCommandHandler
 import com.volkswagen.techchallenge.application.query.getrobotposition.GetRobotPositionQuery
 import com.volkswagen.techchallenge.application.query.getrobotposition.GetRobotPositionQueryHandler
+import com.volkswagen.techchallenge.domain.exception.DomainException
 import com.volkswagen.techchallenge.domain.value.`object`.Heading
+import io.cucumber.datatable.DataTable
 import io.cucumber.java.en.Given
 import io.cucumber.java.en.Then
 import io.cucumber.java.en.When
 import io.cucumber.spring.CucumberContextConfiguration
 import org.assertj.core.api.Assertions
+import org.junit.jupiter.api.assertThrows
 import org.springframework.beans.factory.annotation.Autowired
 import java.util.*
 
@@ -56,6 +59,22 @@ class RobotSteps : BaseIntegrationTest() {
                 moveSequence
             )
         )
+    }
+
+    @Then("the robot with UUID {string} when moving sequence {string} throws exception")
+    fun `the robot does move sequence throws exception`(uuid: String, moveSequence: String, dataTable: DataTable) {
+        val options = dataTable.asMap(String::class.java, String::class.java)
+        val exception = assertThrows<DomainException> {
+            moveRobotCommandHandler.handle(
+                MoveRobotCommand(
+                    UUID.fromString(uuid),
+                    moveSequence
+                )
+            )
+        }
+
+        Assertions.assertThat(exception.message).isEqualTo(getMandatoryParameter("exceptionMessage", options))
+        Assertions.assertThat(exception.code).isEqualTo(getMandatoryParameter("exceptionCode", options))
     }
 
     @Then("the robot with UUID {string} is at position {int}, {int} and heading {string}")

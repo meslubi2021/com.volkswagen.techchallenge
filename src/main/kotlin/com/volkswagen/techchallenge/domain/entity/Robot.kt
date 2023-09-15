@@ -4,7 +4,7 @@ import com.volkswagen.techchallenge.domain.value.`object`.Heading
 import java.util.*
 
 class Robot(
-    var id: Long? = null,
+    val id: Long? = null,
     val logicalId: UUID,
     val workspaceId: Long,
     var positionX: Int,
