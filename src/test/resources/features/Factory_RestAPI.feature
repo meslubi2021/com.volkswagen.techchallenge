@@ -34,34 +34,34 @@ Feature: Factory API REST tests
       | 4 0 S |
       | 5 0 S |
 
-  Scenario: [3]: Bad workspace will throw bad request exception
-    When processing the following input sequence by the factory
-      | 0 5    |
-      | 1 2 N  |
-      | RMMLMM |
-    Then response has code 400 and body is
-      | {"message":"[BadRequestException] - Workspace validation error"} |
-
-  Scenario: [4]: Bad robot position will throw bad request exception
+  Scenario: [3]: Bad robot position will throw bad request exception
     When processing the following input sequence by the factory
       | 5 5    |
       | A 2 N  |
       | RMMLMM |
     Then response has code 400 and body is
-      | {"message":"[BadRequestException] - Robot position and heading validation error"} |
+      | {"message":"[BadRequestException] - Invalid request format"} |
 
-  Scenario: [5]: Bad robot heading will throw bad request exception
+  Scenario: [4]: Bad robot heading will throw bad request exception
     When processing the following input sequence by the factory
       | 5 5    |
       | 1 2 X  |
       | RMMLMM |
     Then response has code 400 and body is
-      | {"message":"[BadRequestException] - Robot position and heading validation error"} |
+      | {"message":"[BadRequestException] - Invalid request format"} |
 
-  Scenario: [6]: Bad robot move sequence will throw bad request exception
+  Scenario: [5]: Bad robot move sequence will throw bad request exception
     When processing the following input sequence by the factory
       | 5 5    |
       | 1 2 N  |
       | RMXLMM |
     Then response has code 400 and body is
-      | {"message":"[BadRequestException] - Robot move sequence validation error"} |
+      | {"message":"[BadRequestException] - Invalid request format"} |
+
+  Scenario: [6]: Bad workspace will throw validation exception
+    When processing the following input sequence by the factory
+      | 0 5    |
+      | 1 2 N  |
+      | RMMLMM |
+    Then response has code 400 and body is
+      | {"message":"[ValidationException] - Workspace need a correct size"} |
