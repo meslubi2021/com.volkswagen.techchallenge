@@ -9,7 +9,7 @@ import com.volkswagen.techchallenge.application.command.moverobot.MoveRobotComma
 import com.volkswagen.techchallenge.application.query.getrobotposition.GetRobotPositionQuery
 import com.volkswagen.techchallenge.application.query.getrobotposition.GetRobotPositionQueryHandler
 import com.volkswagen.techchallenge.domain.value.`object`.Heading
-import com.volkswagen.techchallenge.infrastructure.exception.ValidationException
+import com.volkswagen.techchallenge.infrastructure.exception.BadRequestException
 import org.springframework.stereotype.Service
 import java.util.*
 
@@ -31,7 +31,7 @@ class FactoryService(
         val lines = inputSequence.split("\n")
 
         if(!WORKSPACE_VALIDATOR_REGEX.matches(lines[0])) {
-            throw ValidationException("Workspace validation error")
+            throw BadRequestException("Workspace validation error")
         }
 
         val workspaceUuid = UUID.randomUUID()
@@ -52,11 +52,11 @@ class FactoryService(
             val moveSequence = it[1]
 
             if(!ROBOT_POSITION_AND_HEADING_VALIDATOR_REGEX.matches(positionAndHeading)) {
-                throw ValidationException("Robot position and heading validation error")
+                throw BadRequestException("Robot position and heading validation error")
             }
 
             if(!MOVE_SEQUENCE_VALIDATOR_REGEX.matches(moveSequence)) {
-                throw ValidationException("Robot move sequence validation error")
+                throw BadRequestException("Robot move sequence validation error")
             }
 
             val robotUuid = UUID.randomUUID()

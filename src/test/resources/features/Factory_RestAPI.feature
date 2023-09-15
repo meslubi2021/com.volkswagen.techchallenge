@@ -40,7 +40,7 @@ Feature: Factory API REST tests
       | 1 2 N  |
       | RMMLMM |
     Then response has code 400 and body is
-      | {"message":"[ValidationException] - Workspace validation error"} |
+      | {"message":"[BadRequestException] - Workspace validation error"} |
 
   Scenario: [4]: Bad robot position will throw validation exception
     When processing the following input sequence by the factory
@@ -48,7 +48,7 @@ Feature: Factory API REST tests
       | A 2 N  |
       | RMMLMM |
     Then response has code 400 and body is
-      | {"message":"[ValidationException] - Robot position and heading validation error"} |
+      | {"message":"[BadRequestException] - Robot position and heading validation error"} |
 
   Scenario: [5]: Bad robot heading will throw validation exception
     When processing the following input sequence by the factory
@@ -56,7 +56,7 @@ Feature: Factory API REST tests
       | 1 2 X  |
       | RMMLMM |
     Then response has code 400 and body is
-      | {"message":"[ValidationException] - Robot position and heading validation error"} |
+      | {"message":"[BadRequestException] - Robot position and heading validation error"} |
 
   Scenario: [6]: Bad robot move sequence will throw validation exception
     When processing the following input sequence by the factory
@@ -64,4 +64,4 @@ Feature: Factory API REST tests
       | 1 2 N  |
       | RMXLMM |
     Then response has code 400 and body is
-      | {"message":"[ValidationException] - Robot move sequence validation error"} |
+      | {"message":"[BadRequestException] - Robot move sequence validation error"} |

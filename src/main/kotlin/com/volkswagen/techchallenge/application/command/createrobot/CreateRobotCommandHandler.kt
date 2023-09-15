@@ -4,6 +4,7 @@ import com.volkswagen.common.cqrs.command.CommandHandler
 import com.volkswagen.techchallenge.domain.entity.Robot
 import com.volkswagen.techchallenge.domain.repository.WorkspaceRepository
 import com.volkswagen.common.metrics.MetricsPublisher
+import com.volkswagen.techchallenge.domain.exception.ValidationException
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 
@@ -17,6 +18,16 @@ class CreateRobotCommandHandler(
     override fun handle(command: CreateRobotCommand) {
 
         val workspace = workspaceRepository.findByLogicalId(command.workspaceLogicalId)
+
+        if(
+            command.positionX < 0 ||
+            command.positionY < 0 ||
+            command.positionX > workspace.upperRightCornerX ||
+            command.positionY > workspace.upperRightCornerY
+            ) {
+            throw ValidationException("Robot has to be inside workspace")
+        }
+
         val newRobot = Robot(
             logicalId = command.robotLogicalId,
             workspaceId = workspace.id!!,
