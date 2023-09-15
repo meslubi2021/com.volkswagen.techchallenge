@@ -1,7 +1,7 @@
 package com.volkswagen.techchallenge.infrastructure.database
 
 import com.volkswagen.techchallenge.domain.entity.Robot
-import com.volkswagen.techchallenge.domain.respository.RobotRepository
+import com.volkswagen.techchallenge.domain.repository.RobotRepository
 import com.volkswagen.techchallenge.infrastructure.database.jpa.repository.RobotJpaRepository
 import com.volkswagen.techchallenge.infrastructure.database.mapper.RobotMapper
 import org.springframework.stereotype.Repository

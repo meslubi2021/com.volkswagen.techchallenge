@@ -2,8 +2,8 @@ package com.volkswagen.techchallenge.application.command.moverobot
 
 import com.volkswagen.common.cqrs.command.CommandHandler
 import com.volkswagen.common.metrics.MetricsPublisher
-import com.volkswagen.techchallenge.domain.respository.RobotRepository
-import com.volkswagen.techchallenge.domain.respository.WorkspaceRepository
+import com.volkswagen.techchallenge.domain.repository.RobotRepository
+import com.volkswagen.techchallenge.domain.repository.WorkspaceRepository
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 

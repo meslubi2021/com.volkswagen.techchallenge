@@ -1,7 +1,7 @@
 package com.volkswagen.techchallenge.infrastructure.database
 
 import com.volkswagen.techchallenge.domain.entity.Workspace
-import com.volkswagen.techchallenge.domain.respository.WorkspaceRepository
+import com.volkswagen.techchallenge.domain.repository.WorkspaceRepository
 import com.volkswagen.techchallenge.infrastructure.database.jpa.repository.WorkspaceJpaRepository
 import com.volkswagen.techchallenge.infrastructure.database.mapper.WorkspaceMapper
 import com.volkswagen.techchallenge.infrastructure.exception.EntityNotFoundException

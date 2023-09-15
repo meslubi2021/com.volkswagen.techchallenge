@@ -1,7 +1,7 @@
 package com.volkswagen.techchallenge.application.query.getrobotposition
 
 import com.volkswagen.common.cqrs.query.QueryHandler
-import com.volkswagen.techchallenge.domain.respository.RobotRepository
+import com.volkswagen.techchallenge.domain.repository.RobotRepository
 import org.springframework.stereotype.Service
 
 @Service

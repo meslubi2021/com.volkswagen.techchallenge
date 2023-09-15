@@ -12,7 +12,6 @@ class Workspace(
     val robots: MutableList<Robot> = ArrayList()
 ) {
     fun isPossibleToMoveRobot(robot: Robot): Boolean {
-
         if (
             (robot.positionX < 0 || robot.positionX > upperRightCornerX) ||
             (robot.positionY < 0 || robot.positionY > upperRightCornerY)
@@ -25,6 +24,7 @@ class Workspace(
                 throw RobotCollisionException("Collision with robot at position ${robot.positionX}, ${robot.positionY}")
             }
         }
+
         return true
     }
 }
