@@ -1,7 +1,7 @@
 # Volkswagen Digital Hub Technical Evaluation
 
 ## Author
-All files contained in this repository have been created by me, Tomás García-Pozuelo, during September 2023
+All files contained in this repository have been created by me, [Tomás G-P](www.linkedin.com/in/tomasgp), during September 2023
 
 ## Introduction
 This is the technical evaluation project for Volkswagen job application.
