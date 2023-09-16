@@ -5,9 +5,13 @@ import com.volkswagen.techchallenge.application.command.createworkspace.CreateWo
 import com.volkswagen.techchallenge.application.command.createworkspace.CreateWorkspaceCommandHandler
 import com.volkswagen.techchallenge.application.query.getworkspaceupperright.GetWorkspaceSizeQuery
 import com.volkswagen.techchallenge.application.query.getworkspaceupperright.GetWorkspaceSizeQueryHandler
+import com.volkswagen.techchallenge.domain.exception.DomainException
+import io.cucumber.datatable.DataTable
 import io.cucumber.java.en.Given
 import io.cucumber.java.en.Then
+import io.cucumber.java.en.When
 import org.assertj.core.api.Assertions
+import org.junit.jupiter.api.assertThrows
 import org.springframework.beans.factory.annotation.Autowired
 import java.util.*
 
@@ -40,6 +44,25 @@ class WorkspaceSteps : BaseIntegrationTest() {
 
         Assertions.assertThat(getWorkspaceSizeResponse.sizeX).isEqualTo(sizeX)
         Assertions.assertThat(getWorkspaceSizeResponse.sizeY).isEqualTo(sizeY)
+    }
+
+    @When("a workspace with UUID {string} and upper right corner at position {int}, {int} throws exception")
+    fun `a workspace with upper right corner at position throws exception`(uuid: String, upperRightCornerX: Int, upperRightCornerY: Int,
+                                                          dataTable: DataTable
+    ) {
+        val options = dataTable.asMap(String::class.java, String::class.java)
+        val exception = assertThrows<DomainException> {
+            createWorkspaceCommandHandler.handle(
+                CreateWorkspaceCommand(
+                    UUID.fromString(uuid),
+                    upperRightCornerX,
+                    upperRightCornerY
+                )
+            )
+        }
+
+        Assertions.assertThat(exception.message).isEqualTo(getMandatoryParameter("exceptionMessage", options))
+        Assertions.assertThat(exception.code).isEqualTo(getMandatoryParameter("exceptionCode", options))
     }
 
 }

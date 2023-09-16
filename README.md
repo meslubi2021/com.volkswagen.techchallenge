@@ -29,12 +29,12 @@ For following the hexagonal architecture and CQS patterns there are three main l
  
 - [domain](src%2Fmain%2Fkotlin%2Fcom%2Fvolkswagen%2Ftechchallenge%2Fdomain) 
 
-  It contain the **Domain** entities and its business logic, concrete to each one of them. There could be domain services too if needed. It also contains needed validations to have a valid entities. 
+  It contains the **Domain** entities and its business logic. There could be domain services too if needed. It also contains needed validations to have a valid entities. 
 
 
 - [infrastructure](src%2Fmain%2Fkotlin%2Fcom%2Fvolkswagen%2Ftechchallenge%2Finfrastructure)
   
-  It contains all **Infrastructure** components needed to make the application work (also known as "Adapters"). In this concrete example there is not much. A database and a REST controller. In the future, if we would need to add GraphQL, web clients, event consumers and producers (with Kafka or RabbitMQ) they would go into this package.
+  It contains all **Infrastructure** components needed to make the application work (AKA "Adapters"). In this concrete example there is not much. A database and a REST controller. In the future, if we would need to add GraphQL, web clients, event consumers and producers (with Kafka or RabbitMQ) they would go into this package.
 
 Some other packages:
 - [config](src%2Fmain%2Fkotlin%2Fcom%2Fvolkswagen%2Ftechchallenge%2Fconfig)
